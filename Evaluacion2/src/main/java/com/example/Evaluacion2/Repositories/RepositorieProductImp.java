@@ -30,9 +30,9 @@ public class RepositorieProductImp implements RepositorieProduct {
 
         try (Connection con = sql2o.open()) {
             int id =  (int) con.createQuery(sql,true)
-            .addParameter("codigo", product.getCodigo_producto())
-            .addParameter("nombre", product.getNombre_producto())
-            .addParameter("fecha_vencimiento", product.getFechaVencimiento_producto())
+            .addParameter("codigo", product.getCodigo())
+            .addParameter("nombre", product.getNombre())
+            .addParameter("fecha_vencimiento", product.getFechaVencimiento())
             .addParameter("id_categoria", product.getId_categoria())
             .addParameter("precio", product.getPrecio())
             .executeUpdate().getKey();
@@ -54,9 +54,9 @@ public class RepositorieProductImp implements RepositorieProduct {
 
         try (Connection con = sql2o.open()) {
             con.createQuery(updateSql)
-                .addParameter("codigo", product.getCodigo_producto())
-                .addParameter("nombre", product.getNombre_producto())
-                .addParameter("fecha_vencimiento", product.getFechaVencimiento_producto())
+                .addParameter("codigo", product.getCodigo())
+                .addParameter("nombre", product.getNombre())
+                .addParameter("fecha_vencimiento", product.getFechaVencimiento())
                 .addParameter("id_categoria", product.getId_categoria())
                 .addParameter("precio", product.getPrecio())
                 .addParameter("id", id).executeUpdate();

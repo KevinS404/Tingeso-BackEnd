@@ -1,3 +1,4 @@
+/*
 package com.example.Evaluacion2.Services;
 
 import java.util.List;
@@ -62,3 +63,4 @@ public class ServiceCategory {
         repositorieCategory.deleteCategory(id, Category);
     }
 }
+*/
