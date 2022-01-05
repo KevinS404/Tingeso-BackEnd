@@ -2,14 +2,17 @@
 package com.example.Evaluacion2.Services;
 
 import java.util.List;
-import com.example.Evaluacion2.models.Category;
+
+import com.example.Evaluacion2.Repositories.RepositorieCategory;
+import com.example.Evaluacion2.Models.Category;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,13 +21,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class ServiceCategory {
     private final RepositorieCategory repositorieCategory;
 
-    ServicieCategory(RepositorieCategory repositorieCategory){
+    ServiceCategory(RepositorieCategory repositorieCategory){
         this.repositorieCategory = repositorieCategory;
     }
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
-    public List<Category> getAllCategory(){
-        return repositorieCategory.getAllCategory();
+    public List<Category> getAll(){
+        return repositorieCategory.getAll();
     }
+     /*
     @RequestMapping(value = "/count", method = RequestMethod.GET)
     @ResponseBody
     public String countCategory() {
@@ -43,11 +47,11 @@ public class ServiceCategory {
     public Category getCategoryByNombre(@PathVariable(value = "nombre") String nombre) {
         return this.repositorieCategory.getCategoryByNombre(nombre);
     }
-
+    */
     @PostMapping("/newCategory")
     @ResponseBody
     public Category createCategory(@RequestBody Category Category) {
-        Emergencia result = repositorieCategory.createCategory(Category);
+        Category result = repositorieCategory.createCategory(Category);
         return result;
     }
 
@@ -57,10 +61,10 @@ public class ServiceCategory {
         repositorieCategory.updateCategory(id, Category);
     }
 
-    @PutMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseBody
-    public void deleteCategory(@PathVariable(value = "id") int id, Category Category){
-        repositorieCategory.deleteCategory(id, Category);
+    public void deleteCategory(@PathVariable(value = "id") int id){
+        repositorieCategory.deleteCategory(id);
     }
 }
 */
