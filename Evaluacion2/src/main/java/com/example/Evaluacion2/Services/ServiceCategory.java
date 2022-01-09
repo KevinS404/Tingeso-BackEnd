@@ -1,3 +1,4 @@
+
 package com.example.Evaluacion2.Services;
 
 import java.util.List;
@@ -23,30 +24,11 @@ public class ServiceCategory {
     ServiceCategory(RepositorieCategory repositorieCategory){
         this.repositorieCategory = repositorieCategory;
     }
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/Category", method = RequestMethod.GET)
     public List<Category> getAll(){
         return repositorieCategory.getAll();
     }
-     /*
-    @RequestMapping(value = "/count", method = RequestMethod.GET)
-    @ResponseBody
-    public String countCategory() {
-        int total = repositorieCategory.countCategory();
-        return String.format("Tienes %s Categorias", total);
-    }
-
-    @RequestMapping(value = "/getById/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public Category getCategoryById(@PathVariable(value = "id") Integer id) {
-        return this.repositorieCategory.getCategoryById(id);
-    }
-
-    @RequestMapping(value = "/getByNombre/{nombre}", method = RequestMethod.GET)
-    @ResponseBody
-    public Category getCategoryByNombre(@PathVariable(value = "nombre") String nombre) {
-        return this.repositorieCategory.getCategoryByNombre(nombre);
-    }
-    */
+  
     @PostMapping("/newCategory")
     @ResponseBody
     public Category createCategory(@RequestBody Category Category) {
@@ -54,13 +36,13 @@ public class ServiceCategory {
         return result;
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/Category/update/{id}")
     @ResponseBody
-    public void updateCategory(@PathVariable(value = "id") int id, Category Category) {
-        repositorieCategory.updateCategory(id, Category);
+    public void updateCategory(@PathVariable(value = "id") int id, Category category) {
+        repositorieCategory.updateCategory(id, category);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/Category/delete/{id}")
     @ResponseBody
     public void deleteCategory(@PathVariable(value = "id") int id){
         repositorieCategory.deleteCategory(id);

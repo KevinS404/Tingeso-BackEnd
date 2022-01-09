@@ -23,46 +23,24 @@ public class ServiceProduct {
     ServiceProduct(RepositorieProduct repositorieProduct){
         this.repositorieProduct = repositorieProduct;
     }
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/Product", method = RequestMethod.GET)
     public List<Product> getAllProduct(){
         return repositorieProduct.getAll();
     }
-    /*
-    @RequestMapping(value = "/count", method = RequestMethod.GET)
-    @ResponseBody
-    public String countProduct() {
-        int total = repositorieProduct.countProduct();
-        return String.format("Tienes %s productos", total);
-    }
-    */
-
-    /* terminar
-    @RequestMapping(value = "/getById/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public Product getProductById(@PathVariable(value = "id") Integer id) {
-        return this.repositorieProduct.getAll(id);
-    }
-    
-    @RequestMapping(value = "/getByCodigo/{codigo}", method = RequestMethod.GET)
-    @ResponseBody
-    public Product getProductByCodigo(@PathVariable(value = "codigo_producto") Integer codigo) {
-        return this.repositorieProduct.getProductByCodigo(codigo);
-    }
-    */
-
+   
     @PostMapping("/newProduct")
     @ResponseBody
     public Product createProduct(@RequestBody Product product) {
         return repositorieProduct.createProduct(product);
     }
-
-    @PutMapping("/update/{id}")
+    
+    @PutMapping("/Product/update/{id}")
     @ResponseBody
     public void updateProduct(@PathVariable(value = "id") int id, Product product) {
         repositorieProduct.updateProduct(id, product);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/Product/delete/{id}")
     public void deleteProduct(@PathVariable(value = "id") int id){
         repositorieProduct.deleteProduct(id);
     }
