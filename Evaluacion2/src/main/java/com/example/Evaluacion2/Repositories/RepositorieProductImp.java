@@ -26,14 +26,14 @@ public class RepositorieProductImp implements RepositorieProduct {
     }
     @Override
     public Product createProduct(Product product){
-        String sql = "INSERT INTO product (codigo, nombre, fecha_vencimiento, id_categoria, precio) VALUES(:codigo, :nombre, :fecha_vencimiento, :id_categoria, :precio)";
+        String sql = "INSERT INTO product (codigo, nombre, fecha_vencimiento, categoria, precio) VALUES(:codigo, :nombre, :fecha_vencimiento, :categoria, :precio)";
 
         try (Connection con = sql2o.open()) {
             int id =  (int) con.createQuery(sql,true)
             .addParameter("codigo", product.getCodigo())
             .addParameter("nombre", product.getNombre())
             .addParameter("fecha_vencimiento", product.getFechaVencimiento())
-            .addParameter("id_categoria", product.getId_categoria())
+            .addParameter("categoria", product.getCategoria())
             .addParameter("precio", product.getPrecio())
             .executeUpdate().getKey();
 
@@ -50,14 +50,14 @@ public class RepositorieProductImp implements RepositorieProduct {
     @Override
     public void updateProduct(int id, Product product){
 
-        String updateSql = "UPDATE product SET codigo = :codigo, nombre = :nombre, fecha_vencimiento = :fecha_vencimiento, id_categoria = :id_categoria, precio = :precio WHERE id = :id";
+        String updateSql = "UPDATE product SET codigo = :codigo, nombre = :nombre, fecha_vencimiento = :fecha_vencimiento, categoria = :categoria, precio = :precio WHERE id = :id";
 
         try (Connection con = sql2o.open()) {
             con.createQuery(updateSql)
                 .addParameter("codigo", product.getCodigo())
                 .addParameter("nombre", product.getNombre())
                 .addParameter("fecha_vencimiento", product.getFechaVencimiento())
-                .addParameter("id_categoria", product.getId_categoria())
+                .addParameter("categoria", product.getCategoria())
                 .addParameter("precio", product.getPrecio())
                 .addParameter("id", id).executeUpdate();
 
