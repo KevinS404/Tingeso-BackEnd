@@ -27,5 +27,14 @@ pipeline {
 				}
 			}
   		}
+        stage('Test Junit'){
+            steps{
+                dir("/var/lib/jenkins/workspace/Mingeso/Evaluacion2") {
+                    sh 'chmod +x ./gradlew'
+                    sh './gradlew test'
+                }
+            }
+        }
+
     }
 }
