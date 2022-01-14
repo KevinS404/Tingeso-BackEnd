@@ -17,5 +17,15 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+        stage('SonarQube analysis') {
+    		steps {
+				dir("/var/lib/jenkins/workspace/Mingeso") {
+					withSonarQubeEnv('sonarqube') { 
+						sh 'chmod +x ./gradlew'
+						sh './gradlew sonarqube'
+    				}
+				}
+			}
+  		}
     }
 }
