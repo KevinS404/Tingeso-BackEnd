@@ -35,6 +35,17 @@ pipeline {
                 }
             }
         }
-
+        stage('Backend-build'){
+            steps{
+                dir("/var/lib/jenkins/workspace/Mingeso/Evaluacion2") {
+                    sh 'chmod +x ./gradlew'
+                    sh "./gradlew build"
+                    sh "docker build . -t imagen-backend"
+                    
+                }
+            }
+        }
     }
 }
+
+
