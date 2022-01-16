@@ -41,6 +41,8 @@ pipeline {
                     sh 'chmod +x ./gradlew'
                     sh "./gradlew build"
                     sh "docker build . -t imagen-backend"
+                    sh "docker login"
+                    sh "docker push kevins404/imagen-backend"
                     
                 }
             }
