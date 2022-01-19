@@ -9,7 +9,7 @@ pipeline {
                 }
             }
         }
-        /*
+        
         stage('SonarQube analysis') {
     		steps {
 				dir("/var/lib/jenkins/workspace/Mingeso/Evaluacion2") {
@@ -20,6 +20,7 @@ pipeline {
 				}
 			}
   		}
+        /*  
         stage('Test Junit'){
             steps{
                 dir("/var/lib/jenkins/workspace/Mingeso/Evaluacion2") {
