@@ -34,7 +34,7 @@ pipeline {
                     sh 'chmod +x ./gradlew'
                     sh "./gradlew build"
                     sh "docker build . -t imagen-backend"
-                    sh "docker tag imagen-backend kevins404/back"
+                    sh "docker tag imagen-backend kevins404/imagen-back"
                     script{
                         docker.withRegistry('', 'docker'){
                         sh "docker push kevins404/imagen-back"
