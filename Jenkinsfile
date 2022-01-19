@@ -5,7 +5,7 @@ pipeline {
         stage('pull-repositorio'){
             steps{
                 dir('repositorioBack/Tingeso-BackEnd'){
-                    git pull, credentialsId: 'GIT', url: 'https://github.com/KevinS404/Tingeso-BackEnd.git'
+                    git branch: 'main', credentialsId: 'GIT', url: 'https://github.com/KevinS404/Tingeso-BackEnd.git'
                 }
             }
         }
