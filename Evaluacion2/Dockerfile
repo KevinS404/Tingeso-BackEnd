@@ -1,4 +1,4 @@
-FROM openjdk:15.0.1-oracle
+FROM gradle:6.9.2-jdk11
 
 COPY . .
 
