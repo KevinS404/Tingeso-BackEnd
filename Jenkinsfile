@@ -32,8 +32,9 @@ pipeline {
         stage('Backend-build'){
             steps{
                 dir("/var/lib/jenkins/workspace/Mingeso/Evaluacion2") {
+                    sh 'chmod +x ./gradlew'
+                    sh "./gradlew build"
                     sh "docker build . -t imagen-backend"
-                    sh "docker tag imagen-backend kevins404/imagen-back"
                     script{
                         docker.withRegistry('', 'docker'){
                         sh "docker push kevins404/imagen-back"

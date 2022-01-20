@@ -1,15 +1,11 @@
-FROM gradle:6.9.2-jdk11
+FROM openjdk:15.0.1-oracle
 
-COPY . .
+COPY /build/libs/Evaluacion2-0.0.1-SNAPSHOT.jar Evaluacion2-0.0.1-SNAPSHOT.jar
 
+COPY docker-entrypoint.sh /
 
-RUN 'chmod +x ./gradlew'
-RUN "./gradlew build"
-# copy project files and folders to the current working directory (i.e. 'app' folder)
-COPY . .
+RUN chmod +x docker-entrypoint.sh
+
+ENTRYPOINT ["bash", "docker-entrypoint.sh"]
 
 EXPOSE 3000
-CMD ["gradlew", "bootrun"]
-
-#CMD ["http-server", "dist" ]
-
