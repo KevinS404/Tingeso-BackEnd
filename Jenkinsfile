@@ -34,10 +34,11 @@ pipeline {
                 dir("/var/lib/jenkins/workspace/Mingeso/Evaluacion2") {
                     sh 'chmod +x ./gradlew'
                     sh "./gradlew build"
-                    sh "docker build . -t imagen-backend"
+                    sh "docker build . -t imagen-backend2"
+                    sh "docker tag imagen-backend2 kevins404/imagen-back2"
                     script{
                         docker.withRegistry('', 'docker'){
-                        sh "docker push kevins404/imagen-back"
+                        sh "docker push kevins404/imagen-back2"
                         }
                     }
                 }
