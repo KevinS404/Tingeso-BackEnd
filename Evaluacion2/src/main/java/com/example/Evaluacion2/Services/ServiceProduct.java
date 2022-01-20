@@ -43,7 +43,7 @@ public class ServiceProduct {
 
     @DeleteMapping("/Product/delete/{id}")
     public void deleteProduct(@PathVariable(value = "id") int id){
-        repositorieProduct.deleteProduct(id);
+        //repositorieProduct.deleteProduct(id);
     }
 
     @GetMapping("/hello")
